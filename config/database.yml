@@ -17,6 +17,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: <%= ENV['RAILS_REACT_REDUX_AIRLINER_DATABASE_USER'] %>
+  password: <%= ENV['RAILS_REACT_REDUX_AIRLINER_DATABASE_PASSWORD'] %>
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -81,5 +83,6 @@ test:
 production:
   <<: *default
   database: rails_react_redux_airliner_production
-  username: rails_react_redux_airliner
+  # username: rails_react_redux_airliner
+  username: <%= ENV['RAILS_REACT_REDUX_AIRLINER_DATABASE_USER'] %>
   password: <%= ENV['RAILS_REACT_REDUX_AIRLINER_DATABASE_PASSWORD'] %>
