@@ -1,0 +1,20 @@
+# Airline                      
+# =========
+name:string
+image_url:string
+slug:string (unique identifier for each airline)
+
+# Review
+# =========
+title:string
+description:string
+score:integer
+belongs_to:airline
+belongs_to:user
+
+# User
+# =============
+username: string
+email:string
+password:string
+has_many:reviews
