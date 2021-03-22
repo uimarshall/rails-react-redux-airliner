@@ -18,3 +18,87 @@ username: string
 email:string
 password:string
 has_many:reviews
+
+# Classes
+Class help us structure how our object will look like.
+Class tells us the properties/attr and what can be done with that class-the mtds
+e.g Class Person
+person1 = Person.new (person1 is an instance of the Person class)
+Class Person
+  @name = 'Job Clay'
+  @age = 34
+end
+@name and @age are instance variables, they are the attributes that each instance
+of the Person class will hv when created. 
+# Self
+# self refers to the current object we're working on, its equivalent to 'this' in Js
+
+# Migrations
+Running Migations, create a table with the columns you need.
+Migrations monitors changes and keep track of any change you make to your Db.
+
+# Class methods using Activerecord(ORM) to map our model to the table craeted.
+All the ORM is doing is to give us methods we can call on the Class or instances of the class.
+Player.first = 1st row in the table/or 1st player in the db
+
+# Finding by specific column
+Player.find(2) - find mtd looks for a specific 'id' by default.
+
+# Find by other params
+The find_by mtd, can be use to query the table using other parameters.
+Player.find_by(name: "Debby")
+
+# Making changes in the table
+# Don't go to the schema directly to make changes
+make your changes using Migrations
+# e.g. rails g migrations AddFirstNameToColumn
+# Then make changes in the migrations created and run rails db:migrate
+# Then it will make the changes in the schema for you.
+You can run rails db:rollback, to bring down a migation
+
+# Checking which migrations are up or down
+run rails db:migrate:status
+Never delete a migation when it up, only when it is down.
+
+# Using Hashes for the key/value pair
+Player.first.update(:first_name => 'Peter')
+
+# Associations
+# Are ways for us to relate one model or table to each other
+e.g has_one => this is a one-to-one relationships
+# A Player can have one Address, while the Address 'belongs_to' the Player
+# A Team can 'has_many' players while, players belongs_to a team(one-to-many)
+It implies a player can only has/belongs to one team
+
+class Team < ActiveRecord::Base
+  has_many :players
+end
+class Player < ActiveRecord::Base
+  belongs_to :team
+end
+players & team becomes methods in their respective Classes,
+hence we can call the 'team' mtd on the players and vice versa
+# e.g.We can find a player and then run 'player.team'
+
+# Many-to-many relationships
+To set up a many-to-many relationship, we do so using the #'through' mtd
+# e.g. has_many :through
+A player can has_many games and a game can has_many players, we create the relationship
+using #'appearances' and do a #'join' using the #:through mtd.
+
+class Player < ActiveRecord::Base
+  has_many :appearances
+  has_many: games, through: :appearances
+end
+class Game < ActiveRecord::Base
+  has_many :appearances
+  has_many: players, through: :appearances
+end
+class Appearance < ActiveRecord::Base
+  belongs_to :player
+  belongs_to :game
+end
+
+In a 'many_to_many' relationship, we usually have a '3rd table' that holds the 'ids'
+of the '2 tables' you are trying to connect.
+
