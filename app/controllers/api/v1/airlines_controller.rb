@@ -1,6 +1,7 @@
 module Api
   module V1
     class AirlinesController < ApplicationController
+        # protect_from_forgery with: :null_session
       def index
         # Get all the airlines from our db and render data using d serializer
         airlines = Airline.all
