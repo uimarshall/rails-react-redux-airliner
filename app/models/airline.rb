@@ -4,6 +4,7 @@ class Airline < ApplicationRecord
     # we then set it as the slug value b4 adding it to the Db
     before_create :slugify
     def slugify
+        # self = the current object we are working on, e.g. airline ={}(airline.slug)
         self.slug = name.parameterize #create url save version of the name
         
     end

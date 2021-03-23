@@ -99,6 +99,14 @@ class Appearance < ActiveRecord::Base
   belongs_to :game
 end
 
-In a 'many_to_many' relationship, we usually have a '3rd table' that holds the 'ids'
-of the '2 tables' you are trying to connect.
+# In a 'many_to_many' relationship, we usually have a '3rd table' that holds the 'ids'
+# of the '2 tables' you are trying to connect.
+
+https://api.cloudinary.com/v1_1/uimarshall
+upload preset: xprobmxv
+
+
+
+
+
 
