@@ -105,6 +105,12 @@ end
 https://api.cloudinary.com/v1_1/uimarshall
 upload preset: xprobmxv
 
+# GENERATING OUR APIs
+We use `gem 'fast_jsonapi'`
+We then generate serializers using: 
+# 1. rails g serializer Airline name image_url slug
+# 2. rails g serializer Review title description score airline_id 
+
 
 
 
